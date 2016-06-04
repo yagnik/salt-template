@@ -4,6 +4,7 @@ import salt.loader
 
 _config = '/etc/salt/minion'
 _opts = salt.config.minion_config(_config)
+_opts['pillar_raise_on_missing']= True
 _grains = salt.loader.grains(_opts)
 _opts['grains'] = _grains
 _utils = salt.loader.utils(_opts)
