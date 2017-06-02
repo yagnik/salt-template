@@ -9,7 +9,6 @@ file_roots:
     - /srv/salt/ext
     - /srv/salt/orch
     - /srv/salt/reactors
-    - /srv/salt/states/base
   dev:
     - /srv/salt/states/dev
   stg:
