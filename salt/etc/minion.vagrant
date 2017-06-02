@@ -19,6 +19,7 @@ file_roots:
 
 pillar_roots:
   base:
+    - /srv/salt/pillars
     - /srv/salt/pillars/base
   dev:
     - /srv/salt/pillars/dev

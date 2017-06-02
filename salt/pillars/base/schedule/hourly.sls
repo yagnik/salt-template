@@ -1,0 +1,2 @@
+schedule:
+  hourly: true

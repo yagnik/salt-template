@@ -10,3 +10,4 @@ It includes:
 - [ ] dev environment setup based on docker master/agent
 - [ ] testing environment masterless
 - [ ] testing environment master/agent
+- [ ] create templates for new states -> create state, pillar, example for accessing modules, grains etc
