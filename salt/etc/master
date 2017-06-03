@@ -8,6 +8,9 @@ gather_job_timeout: 60
 ping_on_rotate: True
 renderer: jinja | yaml | gpg
 
+module_dirs:
+  - /srv/salt/ext
+
 file_roots:
   base:
     - /srv/salt/ext
@@ -34,3 +37,6 @@ pillar_roots:
 peer:
   *:
     - test.*
+
+ext_pillar:
+  - custom_pillar: {}

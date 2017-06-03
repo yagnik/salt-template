@@ -4,9 +4,11 @@ hash_type: sha256
 
 log_level: info
 
+module_dirs:
+  - /srv/salt/ext
+
 file_roots:
   base:
-    - /srv/salt/ext
     - /srv/salt/orch
     - /srv/salt/reactors
   dev:
@@ -26,3 +28,6 @@ pillar_roots:
     - /srv/salt/pillars/stg
   prd:
     - /srv/salt/pillars/prd
+
+ext_pillar:
+  - custom_pillar: {}

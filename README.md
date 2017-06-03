@@ -11,3 +11,6 @@ It includes:
 - [ ] testing environment masterless
 - [ ] testing environment master/agent
 - [ ] create templates for new states -> create state, pillar, example for accessing modules, grains etc
+- [ ] add supoprt for docs building
+- [ ] add support to list down todo from code
+- [ ] ensure yml uses pointers so one can update everything
