@@ -39,4 +39,4 @@ peer:
     - test.*
 
 ext_pillar:
-  - custom_pillar: {}
+  - example: {}

@@ -14,3 +14,5 @@ It includes:
 - [ ] add supoprt for docs building
 - [ ] add support to list down todo from code
 - [ ] ensure yml uses pointers so one can update everything
+- [ ] add support for auto documentation
+- [ ] build cli for templating

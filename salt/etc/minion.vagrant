@@ -30,4 +30,4 @@ pillar_roots:
     - /srv/salt/pillars/prd
 
 ext_pillar:
-  - custom_pillar: {}
+  - example: {}

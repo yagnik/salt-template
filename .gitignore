@@ -1,3 +1,5 @@
 .vagrant
 Vagrantfile
 *.pyc
+.cache
+__pycache__

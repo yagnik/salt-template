@@ -1,12 +1,15 @@
 import logging
 
 log = logging.getLogger(__name__)
-__virtualname__ = 'custom_pillar'
+__virtualname__ = 'example'
+
 
 def __virtual__():
     return __virtualname__
 
+
 def ext_pillar(minion_id, pillar, *args, **kwargs):
     return {
-        'custom_pillar': 1
+        'example_pillar': 1,
+        'example_pillar2': 2
     }

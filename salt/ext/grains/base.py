@@ -1,7 +1,7 @@
 def base():
     return {
         "dc": __opts__['id'],
-        "environment": "",
+        "environment": "a",
         "organization": "",
         "namespace": "",
         "service": "",
