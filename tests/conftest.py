@@ -2,38 +2,29 @@ import pytest
 import salt.config
 import salt.loader
 
+_config = '/etc/salt/minion'
+_opts = salt.config.minion_config(_config)
+_grains = salt.loader.grains(_opts)
+_opts['grains'] = _grains
+_utils = salt.loader.utils(_opts)
+_salt = salt.loader.minion_mods(_opts, utils=_utils)
 
-@pytest.fixture(scope="function")
+
+@pytest.fixture
 def __opts__():
-    return _load('opts')
+    return _opts
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def __grains__():
-    return _load('grains')
+    return _grains
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def __utils__():
-    return _load('utils')
+    return _utils
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def __salt__():
-    return _load('salt')
-
-
-# @TODO(yagnik) this is ugly, could be made better
-def _load(name):
-    config = '/etc/salt/minion'
-    opts = salt.config.minion_config(config)
-    grains = salt.loader.grains(opts)
-    opts['grains'] = grains
-    utils = salt.loader.utils(opts)
-    _salt = salt.loader.minion_mods(opts, utils=utils)
-    return {
-        'opts': opts,
-        'grains': grains,
-        'utils': utils,
-        'salt': _salt
-    }[name]
+    return _salt

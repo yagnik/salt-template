@@ -8,7 +8,7 @@ def __virtual__():
 
 
 def func():
-    return False
+    return True
 
 
 def util_func():
