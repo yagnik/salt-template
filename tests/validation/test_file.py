@@ -60,11 +60,11 @@ class TestFile(object):
         core_files = ('init.sls', 'verify.sls', 'map.jinja', 'default.yaml')
         for env in __envs__:
             env_path = "%s/%s" % (state_path, env)
-            if not os.path.exists(env_path):
-                continue
-            for state in os.listdir(env_path):
-                files = os.listdir("%s/%s" % (env_path, state))
-                assert set(core_files).intersection(set(files)) == set(core_files)
+            if os.path.exists(env_path):
+                for state in os.listdir(env_path):
+                    files = os.listdir("%s/%s" % (env_path, state))
+                    assert set(core_files).intersection(set(files)) == set(core_files)
+
 
     def test_ensure_external_module_has_test_file(self):
         external_module_path = "%s/salt/ext" % self.ROOT
@@ -74,7 +74,6 @@ class TestFile(object):
                 ext_module_file_path = "%s/test_%s" % (subdir, file)
                 test_module_file_path = ext_module_file_path.replace(external_module_path, test_path)
                 assert os.path.exists(test_module_file_path), "%s file is missing" % test_module_file_path
-
 
 class SyntaxChecker(object):
     def __init__(self, file, key):
