@@ -47,7 +47,7 @@ class TestFile(object):
         assert yml.keys().sort() == __envs__.sort(), "Environment mismatch!"
 
         for env, target_dict in yml.iteritems():
-            pillars = map(lambda file: os.path.basename(file).split('.')[0] , os.listdir("%s/%s" % (pillar_root, env)))
+            pillars = map(lambda file: os.path.basename(file).split('.')[0], os.listdir("%s/%s" % (pillar_root, env)))
             for target, target_pillars in target_dict.iteritems():
                 assert set(target_pillars).intersection(set(pillars)) == set(pillars), "%s not listed in top file" % (set(pillars).difference(set(target_pillars)))
                 assert set(pillars).intersection(set(target_pillars)) == set(target_pillars), "%s not listed in pillar directory" % (set(target_pillars).difference(set(pillars)))
@@ -75,7 +75,6 @@ class TestFile(object):
                     files = os.listdir("%s/%s" % (env_path, state))
                     assert set(core_files).intersection(set(files)) == set(core_files)
 
-
     def test_ensure_external_module_has_test_file(self):
         external_module_path = "%s/salt/ext" % self.ROOT
         test_path = "%s/tests/unit" % self.ROOT
@@ -84,6 +83,7 @@ class TestFile(object):
                 ext_module_file_path = "%s/test_%s" % (subdir, file)
                 test_module_file_path = ext_module_file_path.replace(external_module_path, test_path)
                 assert os.path.exists(test_module_file_path), "%s file is missing" % test_module_file_path
+
 
 class Hasher(object):
     def __init__(self, path):
@@ -97,6 +97,7 @@ class Hasher(object):
                 with open(str(file_path), 'rb') as afile:
                     hasher.update(afile.read())
         return hasher.hexdigest()
+
 
 class SyntaxChecker(object):
     def __init__(self, file, key):
