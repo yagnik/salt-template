@@ -52,8 +52,18 @@ class TestFile(object):
                 assert set(target_pillars).intersection(set(pillars)) == set(pillars), "%s not listed in top file" % (set(pillars).difference(set(target_pillars)))
                 assert set(pillars).intersection(set(target_pillars)) == set(target_pillars), "%s not listed in pillar directory" % (set(target_pillars).difference(set(pillars)))
 
-    def test_ensure_state_files_are_symlinked_if_similar(self):
-        pass
+    def test_ensure_state_files_are_symlinked_if_similar(self, __envs__):
+        production_env = 'prd'
+        state_path = "%s/salt/states" % self.ROOT
+        production_env_path = "%s/%s" % (state_path, production_env)
+        for env in filter(lambda env: env != production_env, __envs__):
+            env_path = "%s/%s" % (state_path, env)
+            if os.path.exists(env_path):
+                for state in os.listdir(env_path):
+                    state_full_path = "%s/%s" % (env_path, state)
+                    state_prd_full_path = "%s/%s" % (production_env_path, state)
+                    if not os.path.islink(state_full_path):
+                        assert Hasher(state_full_path).hash() != Hasher(state_prd_full_path).hash(), "prd and another environment state file collision, make it a symlink!"
 
     def test_ensure_state_has_core_files(self, __envs__):
         state_path = "%s/salt/states" % self.ROOT
@@ -74,6 +84,19 @@ class TestFile(object):
                 ext_module_file_path = "%s/test_%s" % (subdir, file)
                 test_module_file_path = ext_module_file_path.replace(external_module_path, test_path)
                 assert os.path.exists(test_module_file_path), "%s file is missing" % test_module_file_path
+
+class Hasher(object):
+    def __init__(self, path):
+        self.path = path
+
+    def hash(self):
+        hasher = hashlib.md5()
+        for subdir, dirs, files in os.walk(self.path):
+            for file in files:
+                file_path = os.path.join(subdir, file)
+                with open(str(file_path), 'rb') as afile:
+                    hasher.update(afile.read())
+        return hasher.hexdigest()
 
 class SyntaxChecker(object):
     def __init__(self, file, key):
