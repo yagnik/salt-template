@@ -10,7 +10,12 @@ class TestState(object):
             ENV_STATE_LIST.append((env, state))
 
     @pytest.mark.parametrize("env, state", ENV_STATE_LIST)
-    def test_states(self, __salt_call__, env, state):
+    def test_states_parsing(self, __salt_call__, env, state):
+        state_sls = __salt_call__.cmd('state.show_sls', state, saltenv=env)
+        assert type(state_sls) == dict
+
+    @pytest.mark.parametrize("env, state", ENV_STATE_LIST)
+    def test_states_execution(self, __salt_call__, env, state):
         total_results = __salt_call__.cmd('state.sls', state, saltenv=env)
         for result in total_results.values():
             assert result['result'], "%s state failed to apply in env %s" % (state, env)
