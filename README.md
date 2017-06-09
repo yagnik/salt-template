@@ -13,3 +13,5 @@ It includes:
 - [x] create templates for new states -> create state, pillar, example for accessing modules, grains etc
 - [ ] add support for auto documentation
 - [x] build cli for templating
+- [ ] versioning of packages for state files
+- [ ] check files changed by state files and ensure they are known

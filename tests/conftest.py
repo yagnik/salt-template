@@ -1,6 +1,7 @@
 import pytest
 import salt.config
 import salt.loader
+import salt.client
 
 _config = '/etc/salt/minion'
 _opts = salt.config.minion_config(_config)
@@ -34,3 +35,8 @@ def __salt__():
 @pytest.fixture
 def __envs__():
     return ['base', 'dev', 'stg', 'prd']
+
+
+@pytest.fixture
+def __salt_call__():
+    return salt.client.Caller()
