@@ -1,0 +1,5 @@
+example:
+  pkg: example
+  config: '/etc/example.conf'
+  service:
+    name: example
