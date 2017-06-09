@@ -5,6 +5,5 @@ services:
 
 before_install:
   - docker pull saltstack/centos-7-minimal
-  - docker run -d saltstack/centos-7-minimal -v .:/salt -v ./salt/etc:/etc/salt/ /bin/sh -c "echo in; ls -l"
-  - docker run -d saltstack/centos-7-minimal -v .:/salt -v ./salt/etc:/etc/salt/ /bin/sh -c "cd /salt/; pip install -r requirements.txt"
-script: pytest
+script:
+  - docker run -v $(pwd):/srv saltstack/centos-7-minimal /bin/sh -c "ls -l /srv && cp /srv/salt/etc/minion.vagrant /etc/salt/minion && yum install -y python-pip && cd /srv/ && pip install -r requirements.txt && pytest -v"
