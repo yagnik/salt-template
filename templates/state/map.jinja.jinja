@@ -1,0 +1,24 @@
+{{'{% import_yaml "' + name + '/defaults.yaml" as default_settings %}' }}
+
+{% raw -%}
+{##
+Setup variable using grains['os_family'] based logic, only add key:values here
+that differ from whats in defaults.yaml
+##}
+{% endraw %}
+
+{% raw -%}
+{% set os_family_map = salt['grains.filter_by']({
+        'Debian': {},
+        'RedHat': {
+{% endraw %}
+            "pkg" : '{{name}}-redhat',
+{% raw -%}
+        }
+  }
+  , grain="os_family")
+%}
+{% endraw %}
+
+{{ '{% do default_settings.' + name + '.update(os_family_map) %}' }}
+{{ '{% set ' + name + ' = default_settings.' + name + ' %}'}}
