@@ -67,7 +67,7 @@ class TestFile(object):
 
     def test_ensure_state_has_core_files(self, __envs__):
         state_path = "%s/salt/states" % self.ROOT
-        core_files = ('init.sls', 'verify.sls', 'map.jinja', 'default.yaml')
+        core_files = ('init.sls', 'verify.sls', 'map.jinja', 'defaults.yaml')
         for env in __envs__:
             env_path = "%s/%s" % (state_path, env)
             if os.path.exists(env_path):
