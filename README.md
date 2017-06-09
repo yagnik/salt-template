@@ -10,9 +10,6 @@ It includes:
 - [ ] dev environment setup based on docker master/agent
 - [ ] testing environment masterless
 - [ ] testing environment master/agent
-- [ ] create templates for new states -> create state, pillar, example for accessing modules, grains etc
-- [ ] add supoprt for docs building
-- [ ] add support to list down todo from code
-- [ ] ensure yml uses pointers so one can update everything
+- [x] create templates for new states -> create state, pillar, example for accessing modules, grains etc
 - [ ] add support for auto documentation
-- [ ] build cli for templating
+- [x] build cli for templating
