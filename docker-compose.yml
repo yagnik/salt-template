@@ -1,0 +1,31 @@
+version: '3'
+services:
+  master:
+    build:
+      context: .
+      dockerfile: docker/dockerfile-master
+    volumes:
+    - .:/srv
+    expose:
+    - "4505"
+    - "4506"
+    - "8080"
+    - "8081"
+    ports:
+    - "8080:8080"
+    - "8081:8081"
+    hostname: master
+  minion:
+    build:
+      context: .
+      dockerfile: docker/dockerfile-minion
+    hostname: minion
+    links:
+    - master
+  masterless:
+    build:
+      context: .
+      dockerfile: docker/dockerfile-masterlessminion
+    hostname: minion
+    volumes:
+    - .:/srv

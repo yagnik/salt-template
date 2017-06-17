@@ -1,0 +1,12 @@
+from saltstack/centos-7-minimal
+
+COPY ./salt/etc/master /etc/salt/master
+COPY ./requirements.txt /tmp/requirements.txt
+
+WORKDIR "/srv"
+RUN yum install -y python-pip
+RUN pip install -r /tmp/requirements.txt
+# CMD cd /srv && pytest -p no:cacheprovider
+COPY ./salt/etc/minion.image /etc/salt/minion.image
+CMD echo "master: master" >> /etc/salt/minion
+CMD salt-master -l debug

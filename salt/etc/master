@@ -2,7 +2,7 @@ open_mode: True
 pillar_raise_on_missing: True
 auto_accept: True
 hash_type: sha256
-worker_threads: 100
+worker_threads: 5
 timeout: 5
 gather_job_timeout: 60
 ping_on_rotate: True
@@ -35,8 +35,8 @@ pillar_roots:
     - /srv/salt/pillars/prd
 
 peer:
-  *:
-    - test.*
+  '*':
+    - 'test.*'
 
 ext_pillar:
   - example: {}
