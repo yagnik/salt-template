@@ -8,12 +8,13 @@ It includes:
 - [x] build cli for templating
 - [x] dev environment setup 
 - [x] testing environment 
-- [ ] add support for encrypted pillars
-- [ ] add support for auto documentation
-- [ ] versioning of packages for state files
+- [ ] add example for encrypted pillars
+- [x] versioning of packages for state files
+- [ ] prereq.sls if you allow version upgrade, cluster health check maybe ?
 - [ ] check files changed by state files and ensure they are known
-- [ ] add coed for base image
-- [ ] make sure base image and repo are synced and tested
-- [ ] change docker images to use to base image
-- [ ] add support for ssh roster for verification
-- [ ] auto key removal runner for dead machines
+- [ ] add code for base image, base image and repo lockdown
+- [ ] salt state for master or minion
+- [ ] orch for sync_all on minion start
+- [ ] add support for auto documentation
+- [ ] ask if you want to overwrite template files
+- [ ] ensure that all pillars and grains are used at top of file and set as variable
