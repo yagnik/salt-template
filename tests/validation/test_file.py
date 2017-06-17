@@ -72,8 +72,10 @@ class TestFile(object):
             env_path = "%s/%s" % (state_path, env)
             if os.path.exists(env_path):
                 for state in os.listdir(env_path):
-                    files = os.listdir("%s/%s" % (env_path, state))
-                    assert set(core_files).intersection(set(files)) == set(core_files)
+                    for version in os.listdir(os.path.join(env_path, state)):
+                        if version != "latest.sls":
+                            files = os.listdir(os.path.join(env_path, state, version))
+                            assert set(core_files).intersection(set(files)) == set(core_files)
 
     def test_ensure_external_module_has_test_file(self):
         external_module_path = "%s/salt/ext" % self.ROOT
