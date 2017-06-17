@@ -16,3 +16,4 @@ It includes:
 - [ ] make sure base image and repo are synced and tested
 - [ ] change docker images to use to base image
 - [ ] add support for ssh roster for verification
+- [ ] auto key removal runner for dead machines
