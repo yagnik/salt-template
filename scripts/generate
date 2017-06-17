@@ -39,10 +39,12 @@ VALID_TYPES = {
         "templates/pillar/init.sls.jinja": "salt/pillars/{{env}}/{{name}}.sls"
     },
     'state' : {
-        "templates/state/init.sls.jinja": "salt/states/{{env}}/{{name}}/init.sls",
-        "templates/state/defaults.yaml.jinja": "salt/states/{{env}}/{{name}}/defaults.yaml",
-        "templates/state/map.jinja.jinja": "salt/states/{{env}}/{{name}}/map.jinja",
-        "templates/state/verify.sls.jinja": "salt/states/{{env}}/{{name}}/verify.sls",
+        "templates/state/init.sls.jinja": "salt/states/{{env}}/{{name}}/{{version}}/init.sls",
+        "templates/state/defaults.yaml.jinja": "salt/states/{{env}}/{{name}}/{{version}}/defaults.yaml",
+        "templates/state/map.jinja.jinja": "salt/states/{{env}}/{{name}}/{{version}}/map.jinja",
+        "templates/state/verify.sls.jinja": "salt/states/{{env}}/{{name}}/{{version}}/verify.sls",
+        "templates/state/README.md.jinja": "salt/states/{{env}}/{{name}}/{{version}}/README.md",
+        "templates/state/latest.sls.jinja": "salt/states/{{env}}/{{name}}/latest.sls",
     },
 }
 
@@ -50,12 +52,13 @@ VALID_TYPES = {
 class Jinja(object):
     ROOT_PATH = os.path.abspath("%s/../" % os.path.dirname(os.path.realpath(__file__)))
 
-    def __init__(self, template_type, name, env='dev'):
+    def __init__(self, template_type, name, env='dev', version="v1_0"):
         if template_type not in VALID_TYPES.keys():
             raise Exception("Invalid template type")
         self.name = name
         self.env = env
         self.template_type = template_type
+        self.version = version
         log.info("Generator initialized for type: %s with name: %s in env: %s" % (self.template_type, self.name, self.env))
 
     def process(self):
@@ -67,7 +70,7 @@ class Jinja(object):
     def _paths(self):
         path_dict = {}
         for input_path, output_path in VALID_TYPES[self.template_type].iteritems():
-            path_dict[input_path] = Template(output_path).render(name=self.name, env=self.env)
+            path_dict[input_path] = Template(output_path).render(name=self.name, env=self.env, version=self.version)
         return path_dict
 
     def _read(self, input_path):
@@ -101,8 +104,9 @@ class SanitizedNameType(click.ParamType):
 @click.option('--type', type=click.Choice(VALID_TYPES.keys()), help='type of file to generate', prompt=True)
 @click.option('--name', prompt=True, type=SanitizedNameType(), help='name of the generated file')
 @click.option('--env', default='dev', help='environment to place the file in (only applicable in state and pillar')
-def create(name, type, env):
-    Jinja(template_type=type, name=name, env=env).process()
+@click.option('--version', default='v1_0', help='version number (only applicable in state files)')
+def create(name, type, env, version):
+    Jinja(template_type=type, name=name, env=env, version=version).process()
 
 if __name__ == '__main__':
     create()
