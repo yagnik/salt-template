@@ -1,4 +1,7 @@
-class TestExample(object):
+from tests import TestMinion
+
+
+class TestExample(TestMinion):
     def test_func(self, __salt__):
         assert __salt__['example.func']()
 

@@ -35,8 +35,3 @@ def __salt__():
 @pytest.fixture
 def __envs__():
     return ['base', 'dev', 'stg', 'prd']
-
-
-@pytest.fixture
-def __salt_call__():
-    return salt.client.Caller()

@@ -1,4 +1,7 @@
-class TestExample(object):
+from tests import TestMinion
+
+
+class TestExample(TestMinion):
     def test_pillar(self, __salt__):
         # using get is not enough cause get doesn't go
         # to master to refresh pillar items refreshes pillar
