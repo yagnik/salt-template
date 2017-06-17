@@ -6,7 +6,7 @@ It includes:
 - [x] enforce state file parsing and execution tests
 - [x] create templates for new states -> create state, pillar, example for accessing modules, grains etc
 - [x] build cli for templating
-- [ ] dev environment setup 
+- [x] dev environment setup 
 - [ ] testing environment 
 - [ ] add support for encrypted pillars
 - [ ] add support for auto documentation
@@ -15,3 +15,4 @@ It includes:
 - [ ] add coed for base image
 - [ ] make sure base image and repo are synced and tested
 - [ ] change docker images to use to base image
+- [ ] add support for ssh roster for verification
