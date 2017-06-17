@@ -7,7 +7,7 @@ It includes:
 - [x] create templates for new states -> create state, pillar, example for accessing modules, grains etc
 - [x] build cli for templating
 - [x] dev environment setup 
-- [ ] testing environment 
+- [x] testing environment 
 - [ ] add support for encrypted pillars
 - [ ] add support for auto documentation
 - [ ] versioning of packages for state files
