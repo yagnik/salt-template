@@ -15,11 +15,11 @@ services:
     - "8080:8080"
     - "8081:8081"
     hostname: master
-  minion:
+  minion_dev:
     build:
       context: .
       dockerfile: docker/dockerfile-minion
-    hostname: minion
+    hostname: minion-dev-int
     links:
     - master
   masterless:

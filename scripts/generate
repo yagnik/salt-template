@@ -43,7 +43,9 @@ VALID_TYPES = {
         "templates/state/defaults.yaml.jinja": "salt/states/{{env}}/{{name}}/{{version}}/defaults.yaml",
         "templates/state/map.jinja.jinja": "salt/states/{{env}}/{{name}}/{{version}}/map.jinja",
         "templates/state/verify.sls.jinja": "salt/states/{{env}}/{{name}}/{{version}}/verify.sls",
+        "templates/state/requisite.sls.jinja": "salt/states/{{env}}/{{name}}/{{version}}/requisite.sls",
         "templates/state/README.md.jinja": "salt/states/{{env}}/{{name}}/{{version}}/README.md",
+        "templates/state/metadata.yaml.jinja": "salt/states/{{env}}/{{name}}/{{version}}/metadata.yaml",
         "templates/state/latest.sls.jinja": "salt/states/{{env}}/{{name}}/latest.sls",
     },
 }

@@ -17,10 +17,16 @@ for env in os.listdir(STATE_PATH):
 class TestStateMasterMinion(TestMaster):
     @pytest.mark.parametrize("env, state, version", ENV_STATE_LIST)
     def test_states_execution(self, __salt_mastercall__, env, state, version):
+        total_results = __salt_mastercall__.cmd('*', 'state.sls', arg=["%s.%s.requisite" % (state, version)], kwarg={'saltenv': env})
+        for minion_id, results in total_results.iteritems():
+            for result in results.values():
+                assert result['result'], "%s state requisite failed to apply in env %s" % (state, env)
+
         total_results = __salt_mastercall__.cmd('*', 'state.sls', arg=["%s.%s" % (state, version)], kwarg={'saltenv': env})
         for minion_id, results in total_results.iteritems():
             for result in results.values():
                 assert result['result'], "%s state failed to apply in env %s" % (state, env)
+
 
         total_results = __salt_mastercall__.cmd('*', 'state.sls', arg=["%s.%s.verify" % (state, version)], kwarg={'saltenv': env})
         for minion_id, results in total_results.iteritems():
@@ -35,7 +41,12 @@ class TestStateMinion(TestMinion):
         assert type(state_sls) == dict
 
     @pytest.mark.parametrize("env, state, version", ENV_STATE_LIST)
+    @pytest.mark.usefixtures("filesystem_watch")
     def test_states_execution(self, __salt_call__, env, state, version):
+        total_results = __salt_call__.cmd('state.sls', "%s.%s.requisite" % (state, version), saltenv=env)
+        for result in total_results.values():
+            assert result['result'], "%s state requisite failed to apply in env %s" % (state, env)
+
         total_results = __salt_call__.cmd('state.sls', "%s.%s" % (state, version), saltenv=env)
         for result in total_results.values():
             assert result['result'], "%s state failed to apply in env %s" % (state, env)

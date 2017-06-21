@@ -2,6 +2,7 @@ import pytest
 import salt.config
 import salt.loader
 import salt.client
+import watchdog
 
 _config = '/etc/salt/minion'
 _opts = salt.config.minion_config(_config)
@@ -35,3 +36,29 @@ def __salt__():
 @pytest.fixture
 def __envs__():
     return ['base', 'dev', 'stg', 'prd']
+
+
+from watchdog.observers import Observer
+from watchdog.events import PatternMatchingEventHandler
+class MyEventHandler(PatternMatchingEventHandler):
+    def __init__(self, ignore_patterns):
+        super(MyEventHandler, self).__init__(ignore_patterns=ignore_patterns)
+        self.files = []
+    def on_any_event(self, event):
+        self.files.append(event.src_path)
+
+
+import time
+@pytest.fixture
+def filesystem_watch(env, state):
+    pass
+    # event_handler = MyEventHandler(ignore_patterns=["/var/cache/*", "/var/log/*", "/tmp/*"])
+    # observer = Observer()
+    # observer.schedule(event_handler, "/", recursive=True)
+    # observer.start()
+    # yield
+    # time.sleep(2)
+    # observer.stop()
+    # observer.join()
+    # print event_handler.files
+    # assert False

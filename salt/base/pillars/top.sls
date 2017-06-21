@@ -1,15 +1,16 @@
 base:
   '*':
     - schedule
+    - encrypted
 
 dev:
-  '*.dev.*':
+  '*-dev-*':
     - example
 
 stg:
-  '*.stg.*':
+  '*-stg-*':
     - example
 
 prd:
-  '*.prd.*':
+  '*-prd-*':
     - example

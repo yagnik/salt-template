@@ -1,9 +1,9 @@
 from saltstack/centos-7-minimal
 
-COPY ./salt/etc/minion.vagrant /etc/salt/minion
-COPY ./requirements.txt /tmp/requirements.txt
-
 WORKDIR "/srv"
 RUN yum install -y python-pip
+COPY ./requirements.txt /tmp/requirements.txt
+
 RUN pip install -r /tmp/requirements.txt
+COPY ./salt/etc/minion.vagrant /etc/salt/minion
 CMD tail -f /dev/null
