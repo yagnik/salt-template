@@ -1,7 +1,6 @@
 base:
   '*':
     - schedule
-    - encrypted
 
 dev:
   '*-dev-*':

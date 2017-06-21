@@ -9,29 +9,23 @@ module_dirs:
 
 file_roots:
   base:
-    - /srv/salt/ext
+    - /srv/salt/base/*
   dev:
-    - /srv/salt/orch/dev
-    - /srv/salt/reactors/dev
-    - /srv/salt/states/dev
+    - /srv/salt/dev/*
   stg:
-    - /srv/salt/orch/stg
-    - /srv/salt/reactors/stg
-    - /srv/salt/states/stg
+    - /srv/salt/stg/*
   prd:
-    - /srv/salt/orch/prd
-    - /srv/salt/reactors/prd
-    - /srv/salt/states/prd
+    - /srv/salt/prd/*
 
 pillar_roots:
   base:
-    - /srv/salt/pillars/base
+    - /srv/salt/base/pillars
   dev:
-    - /srv/salt/pillars/dev
+    - /srv/salt/dev/pillars
   stg:
-    - /srv/salt/pillars/stg
+    - /srv/salt/stg/pillars
   prd:
-    - /srv/salt/pillars/prd
+    - /srv/salt/prd/pillars
 
 ext_pillar:
   - example: {}
