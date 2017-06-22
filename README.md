@@ -13,8 +13,6 @@ It includes:
 - [x] metadata.yaml for state files to list versions, files and packages managed by state
 - [x] add test to run prereq.sls
 - [x] add test to check metadata schema
-- [ ] check files changed by state files and ensure they are known
-- [ ] add code for base image, base image and repo lockdown
 - [x] orch for sync_all on minion start
 - [ ] add support for beacons and setup for logical event processing
 - [ ] add example for encrypted pillars
@@ -23,3 +21,5 @@ It includes:
 - [ ] add support for custom beacons and schema management
 - [ ] add support for custom engine to listen on events and notify etc
 - [ ] documentation of some kind 
+- [ ] check files changed by state files and ensure they are known
+- [ ] add code for base image, base image and repo lockdown
