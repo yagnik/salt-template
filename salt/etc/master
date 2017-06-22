@@ -40,4 +40,4 @@ ext_pillar:
 
 reactor:
   - 'salt/minion/*/start':
-    - /srv/salt/reactors/boot.sls
+    - /srv/salt/dev/reactors/boot.sls
