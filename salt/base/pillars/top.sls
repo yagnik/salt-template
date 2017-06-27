@@ -1,6 +1,7 @@
 base:
   '*':
     - schedule
+    - beacons
 
 dev:
   '*-dev-*':

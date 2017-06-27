@@ -7,8 +7,12 @@ log_level: info
 module_dirs:
   - /srv/salt/ext
 
+engines:
+  example: {}
+
 file_roots:
   base:
+    - /srv/salt/ext
     - /srv/salt/base/*
   dev:
     - /srv/salt/dev/*

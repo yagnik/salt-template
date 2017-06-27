@@ -1,0 +1,2 @@
+beacons:
+  example: {}

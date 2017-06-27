@@ -3,3 +3,4 @@ minion_start.orchestration:
     - mods: orch.boot
     - pillar:
         id: {{ data['id'] }}
+    - saltenv: dev

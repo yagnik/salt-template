@@ -14,12 +14,10 @@ It includes:
 - [x] add test to run prereq.sls
 - [x] add test to check metadata schema
 - [x] orch for sync_all on minion start
-- [ ] add support for beacons and setup for logical event processing
-- [ ] add example for encrypted pillars
-- [ ] add support for custom returner on all salt runs
-- [ ] add support for custom outputter
-- [ ] add support for custom beacons and schema management
-- [ ] add support for custom engine to listen on events and notify etc
-- [ ] documentation of some kind 
+- [x] add support for beacons and setup for logical event processing
+- [x] add support for returner
+- [x] add support for beacons
+- [x] add support for custom engine to listen on events and notify etc
 - [ ] check files changed by state files and ensure they are known
 - [ ] add code for base image, base image and repo lockdown
+- [ ] add example for encrypted pillars
