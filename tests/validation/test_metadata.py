@@ -1,15 +1,16 @@
 import os
 import yaml
 
+
 class TestFile(object):
     ROOT = os.path.abspath("%s/../../" % os.path.dirname(os.path.realpath(__file__)))
     METADATA_SCHEMA = [
-      "name",
-      "type",
-      "version",
-      "packages",
-      "files",
-      "services"
+        "name",
+        "type",
+        "version",
+        "packages",
+        "files",
+        "services"
     ]
 
     def test_state_metadata(self):

@@ -29,7 +29,6 @@ class TestStateMasterMinion(TestMaster):
             for result in results.values():
                 assert result['result'], "%s state failed to apply in env %s" % (state, env)
 
-
         total_results = __salt_mastercall__.cmd('*', 'state.sls', arg=["%s.%s.verify" % (state, version)], kwarg={'saltenv': env})
         for minion_id, results in total_results.iteritems():
             for result in results.values():

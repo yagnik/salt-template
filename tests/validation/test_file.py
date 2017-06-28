@@ -1,7 +1,6 @@
 import os
 import re
 import hashlib
-import yaml
 
 
 class TestFile(object):

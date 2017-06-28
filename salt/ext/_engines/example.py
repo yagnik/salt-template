@@ -7,10 +7,9 @@ log = logging.getLogger(__name__)
 
 def start():
     if __opts__['__role'] == 'master':
-        event_bus = salt.utils.event.get_master_event(
-                __opts__,
-                __opts__['sock_dir'],
-                listen=True)
+        event_bus = salt.utils.event.get_master_event(__opts__,
+                                                      __opts__['sock_dir'],
+                                                      listen=True)
     else:
         event_bus = salt.utils.event.get_event(
             'minion',
