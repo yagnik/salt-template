@@ -19,13 +19,19 @@ file_roots:
     - /srv/salt/ext
     - /srv/salt/base/
   dev:
-    - /srv/salt/dev/
+    - /srv/salt/dev/orch
+    - /srv/salt/dev/reactors
+    - /srv/salt/dev/pillars
     - /srv/salt/dev/states
   stg:
-    - /srv/salt/stg/
+    - /srv/salt/stg/orch
+    - /srv/salt/stg/reactors
+    - /srv/salt/stg/pillars
     - /srv/salt/stg/states
   prd:
-    - /srv/salt/prd/
+    - /srv/salt/prd/orch
+    - /srv/salt/prd/reactors
+    - /srv/salt/prd/pillars
     - /srv/salt/prd/states
 
 pillar_roots:

@@ -5,5 +5,5 @@ RUN yum install -y python-pip
 COPY ./requirements.txt /tmp/requirements.txt
 
 RUN pip install -r /tmp/requirements.txt
-COPY ./salt/etc/minion.vagrant /etc/salt/minion
+COPY ./templates/etc/minion.vagrant /etc/salt/minion
 CMD tail -f /dev/null

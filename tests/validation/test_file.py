@@ -40,17 +40,17 @@ class TestFile(object):
                 else:
                     md5_hash[md5] = path
 
-    def test_top_files_has_all_pillars(self, __envs__):
-        pillar_root = "%s/salt/pillars" % self.ROOT
-        top_file = "%s/top.sls" % pillar_root
-        yml = yaml.load(open(top_file, 'r'))
-        assert yml.keys().sort() == __envs__.sort(), "Environment mismatch!"
+    # def test_top_files_has_all_pillars(self, __envs__):
+    #     pillar_root = "%s/salt/pillars" % self.ROOT
+    #     top_file = "%s/top.sls" % pillar_root
+    #     yml = yaml.load(open(top_file, 'r'))
+    #     assert yml.keys().sort() == __envs__.sort(), "Environment mismatch!"
 
-        for env, target_dict in yml.iteritems():
-            pillars = map(lambda file: os.path.basename(file).split('.')[0], os.listdir("%s/%s" % (pillar_root, env)))
-            for target, target_pillars in target_dict.iteritems():
-                assert set(target_pillars).intersection(set(pillars)) == set(pillars), "%s not listed in top file" % (set(pillars).difference(set(target_pillars)))
-                assert set(pillars).intersection(set(target_pillars)) == set(target_pillars), "%s not listed in pillar directory" % (set(target_pillars).difference(set(pillars)))
+    #     for env, target_dict in yml.iteritems():
+    #         pillars = map(lambda file: os.path.basename(file).split('.')[0], os.listdir("%s/%s" % (pillar_root, env)))
+    #         for target, target_pillars in target_dict.iteritems():
+    #             assert set(target_pillars).intersection(set(pillars)) == set(pillars), "%s not listed in top file" % (set(pillars).difference(set(target_pillars)))
+    #             assert set(pillars).intersection(set(target_pillars)) == set(target_pillars), "%s not listed in pillar directory" % (set(target_pillars).difference(set(pillars)))
 
     def test_ensure_state_files_are_symlinked_if_similar(self, __envs__):
         production_env = 'prd'
@@ -77,14 +77,14 @@ class TestFile(object):
                             files = os.listdir(os.path.join(env_path, state, version))
                             assert set(core_files).intersection(set(files)) == set(core_files)
 
-    def test_ensure_external_module_has_test_file(self):
-        external_module_path = "%s/salt/ext" % self.ROOT
-        test_path = "%s/tests/unit" % self.ROOT
-        for subdir, dirs, files in os.walk(external_module_path):
-            for file in filter(lambda file: file.endswith(".py") and file != "__init__.py", files):
-                ext_module_file_path = "%s/test_%s" % (subdir, file)
-                test_module_file_path = ext_module_file_path.replace(external_module_path, test_path)
-                assert os.path.exists(test_module_file_path), "%s file is missing" % test_module_file_path
+    # def test_ensure_external_module_has_test_file(self):
+    #     external_module_path = "%s/salt/ext" % self.ROOT
+    #     test_path = "%s/tests/unit" % self.ROOT
+    #     for subdir, dirs, files in os.walk(external_module_path):
+    #         for file in filter(lambda file: file.endswith(".py") and file != "__init__.py", files):
+    #             ext_module_file_path = "%s/test_%s" % (subdir, file)
+    #             test_module_file_path = ext_module_file_path.replace(external_module_path, test_path)
+    #             assert os.path.exists(test_module_file_path), "%s file is missing" % test_module_file_path
 
 
 class Hasher(object):
