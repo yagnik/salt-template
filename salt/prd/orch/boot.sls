@@ -3,7 +3,7 @@
 boot.sync_all:
   salt.function:
     - name: saltutil.sync_all
-    - tgt: '{{ id }}'
+    - tgt: 'foo'
 
 boot.state.run:
   salt.state:

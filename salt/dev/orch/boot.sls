@@ -1,1 +1,0 @@
-../../prd/orch/boot.sls
