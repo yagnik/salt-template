@@ -23,3 +23,6 @@ test-masterless: docker-start
 	docker exec -it saltstacktemplate_masterless_1 pytest -v -p no:cacheprovider
 
 test: docker-start test-masterless test-master test-style
+
+script:
+	./scripts/generate

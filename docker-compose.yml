@@ -3,7 +3,7 @@ services:
   master:
     build:
       context: .
-      dockerfile: docker/dockerfile-master
+      dockerfile: templates/docker/dockerfile-master
     volumes:
     - .:/srv
     expose:
@@ -18,14 +18,14 @@ services:
   minion_dev:
     build:
       context: .
-      dockerfile: docker/dockerfile-minion
+      dockerfile: templates/docker/dockerfile-minion
     hostname: minion-dev-int
     links:
     - master
   masterless:
     build:
       context: .
-      dockerfile: docker/dockerfile-masterlessminion
+      dockerfile: templates/docker/dockerfile-masterlessminion
     hostname: minion
     volumes:
     - .:/srv
