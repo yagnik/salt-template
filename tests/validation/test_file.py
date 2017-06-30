@@ -1,6 +1,7 @@
 import os
 import re
 import hashlib
+import yaml
 
 
 class TestFile(object):
@@ -40,7 +41,7 @@ class TestFile(object):
                     md5_hash[md5] = path
 
     # def test_top_files_has_all_pillars(self, __envs__):
-    #     pillar_root = "%s/salt/pillars" % self.ROOT
+    #     pillar_root = "%s/salt/base/pillars" % self.ROOT
     #     top_file = "%s/top.sls" % pillar_root
     #     yml = yaml.load(open(top_file, 'r'))
     #     assert yml.keys().sort() == __envs__.sort(), "Environment mismatch!"
