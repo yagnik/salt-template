@@ -39,14 +39,14 @@ VALID_TYPES = {
         "templates/pillar/init.sls.jinja": "salt/pillars/{{env}}/{{name}}.sls"
     },
     'state' : {
-        "templates/state/init.sls.jinja": "salt/states/{{env}}/{{name}}/{{version}}/init.sls",
         "templates/state/defaults.yaml.jinja": "salt/states/{{env}}/{{name}}/{{version}}/defaults.yaml",
-        "templates/state/map.jinja.jinja": "salt/states/{{env}}/{{name}}/{{version}}/map.jinja",
-        "templates/state/verify.sls.jinja": "salt/states/{{env}}/{{name}}/{{version}}/verify.sls",
-        "templates/state/requisite.sls.jinja": "salt/states/{{env}}/{{name}}/{{version}}/requisite.sls",
-        "templates/state/README.md.jinja": "salt/states/{{env}}/{{name}}/{{version}}/README.md",
-        "templates/state/metadata.yaml.jinja": "salt/states/{{env}}/{{name}}/{{version}}/metadata.yaml",
+        "templates/state/init.sls.jinja": "salt/states/{{env}}/{{name}}/{{version}}/init.sls",
         "templates/state/latest.sls.jinja": "salt/states/{{env}}/{{name}}/latest.sls",
+        "templates/state/map.jinja.jinja": "salt/states/{{env}}/{{name}}/{{version}}/map.jinja",
+        "templates/state/metadata.yaml.jinja": "salt/states/{{env}}/{{name}}/{{version}}/metadata.yaml",
+        "templates/state/README.md.jinja": "salt/states/{{env}}/{{name}}/{{version}}/README.md",
+        "templates/state/requisite.sls.jinja": "salt/states/{{env}}/{{name}}/{{version}}/requisite.sls",
+        "templates/state/verify.sls.jinja": "salt/states/{{env}}/{{name}}/{{version}}/verify.sls",
     },
 }
 
