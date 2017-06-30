@@ -11,7 +11,11 @@ ENV_STATE_LIST = []
 for STATE_PATH in glob.glob(os.path.join(ROOT, "salt/*/states")):
     env = re.search(r'\/salt\/(.*)\/states$', STATE_PATH).group(1)
     for state in os.listdir(STATE_PATH):
+        if state.startswith("."):
+            continue
         for version in os.listdir(os.path.join(STATE_PATH, state)):
+            if state.startswith("."):
+                continue
             if version != "latest.sls":
                 ENV_STATE_LIST.append((env, state, version))
 
