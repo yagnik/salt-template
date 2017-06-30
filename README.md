@@ -22,4 +22,5 @@ It includes:
 - [ ] check files changed by state files and ensure they are known
 - [ ] add code for base image, base image and repo lockdown
 - [ ] add example for encrypted pillars
-
+- [ ] add tests for different env
+- [ ] add support for salt ssh/ salt cloud ?
