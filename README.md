@@ -1,4 +1,5 @@
-# Salt Template
+# Salt Template [![Build Status](https://travis-ci.org/yagnik/saltstack-template.svg?branch=master)](https://travis-ci.org/yagnik/saltstack-template)
+
 ## Introduction
 Setting up salt in production can require knowing a lot of details of every piece of salt and how they work. The repository provides opinioinated barebone salt setup with dev and test environment based on docker containers.
 
