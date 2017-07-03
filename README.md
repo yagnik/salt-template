@@ -1,26 +1,73 @@
-# Saltstack
-The repo is a template for saltstack setup in production environment.
-It includes:
-- [x] directory layout
-- [x] code linting using flake8 (pep8 + pylint + circular dependency)
-- [x] enforce state file parsing and execution tests
-- [x] create templates for new states -> create state, pillar, example for accessing modules, grains etc
-- [x] build cli for templating
-- [x] dev environment setup 
-- [x] testing environment 
-- [x] versioning of packages for state files
-- [x] prereq.sls if you allow version upgrade, cluster health check maybe ?
-- [x] metadata.yaml for state files to list versions, files and packages managed by state
-- [x] add test to run prereq.sls
-- [x] add test to check metadata schema
-- [x] orch for sync_all on minion start
-- [x] add support for beacons and setup for logical event processing
-- [x] add support for returner
-- [x] add support for beacons
-- [x] add support for custom engine to listen on events and notify etc
-- [x] add support for multiple environment which doesn't cause fatigue
+# Salt Template
+## Introduction
+Setting up salt in production can require knowing a lot of details of every piece of salt and how they work. The repository provides opinioinated barebone salt setup with dev and test environment based on docker containers.
+
+The setup was used to manage ~ 5k nodes with a team of ~ 30 core devops and ~100 developers contributing to it. 
+
+The structure is made to balance between technical and people efficiency while ensuring stability of infrastructure. More details in the opinionated section.
+
+## Setup
+- (PREREQUISITE) Please have docker and docker-compose installed to run dev and tests environment
+- Clone this repo:
+```
+git clone git@github.com:yagnik/saltstack-template.git
+```
+- Inside the directory where you cloned the repo
+```
+make test
+```
+The above will bring up docker containers using docker-compose and run tests to ensure everything is setup properly.
+
+## Layouts and opinions
+The directory structure of the repo is as follows:
+- salt -> this directory houses all salt code including states and modules
+- scripts -> scripts that makes it easier to work with this repo such as generating templates for custom modules and states
+- templates -> templates for configs and modules
+- tests -> tests that ensure validity of modules, states and team specific requirements
+
+### Salt
+The salt directory houses the extension module present in `ext` directory and the four environments most salt deployments have `base`, `dev`, `stg`, `prd`.
+
+`ext` : The ext folder is meant to house all custom extension modules with examples of each and how to write them. Their corresponding unit tests go into `tests/unit` directory.
+
+`base` : All salt deployments need a `base` environment to pick the pillar base from. This environment is where we put common pillars. One thing to note here is we don't put state files here. More details in `prd` section.
+
+`dev`, `stg`, `prd` : The other three environments each houses orchestrators, pillars, reactors and states. The pillars here are merged with base environment and overwritten. Orchestrators, reactors and states on the other hand can look ahead. For example: if you have a state `foo` in prd environment, it is available in dev environment. This is possible due to our `file_roots` setting in config. This allows us to have a sane production environment while also support testing new states without the overhead of maintaining two copies of the same state.
+
+### Tests
+`integration` : Integration tests are used to test master <-> minion interaction which include state runs, orchestrations etc.
+
+`unit` : These are unit tests for all custom modules.
+
+`validation` : These are best practices that we enforced to ensure unwanted bugs. More details in the best practices section.
+
+
+### Best Practices
+- The environment should be top level concern so that code from one environment doesn't impact the other until explicitly asked.
+- All python code needs to be linted by flake8
+- Ensure that all state files have sane defaults and can be parsed and executed without any custom cli options
+- All state files need to have core files to make it easier for future maintenance:
+    + state name
+        * v(major)_(minor): version folder, ensure it matches the version of the recipe you are installing
+            - defaults.yaml: list of all defaults that this recipe needs, also source for all options that can be overwritten
+            - init.sls:  base state where things get done by default
+            - map.jinja: merge default, pillars and any logic based on os etc
+            - metadata.yml: tells us which file, service, package this file edits
+            - readme.me: tells what the state does and how to execute for new devs
+            - requisite.sls: a state to check whether the state can be run, this was added to support the use case wherein you are upgrading a cluster and need ot ensure that no one else is doing anything
+            - verify.sls: state to ensure that everything is setup correctly, cannot modify the system and is only allowed to use modules.
+        * latest.sls: this points to latest stable we support
+- All execution modules and state should follow same template for anyone to diggin. Convention over configuration supported through templates.
+- All pillars need to have their top level key same as file name to ensure no collision. 
+- All states need to have their id start from state name.
+- All files are snake case.
+
+### Gotachas
+-  Add boot orchestrate to sync_all on minion start to allow custom module at boot time. https://docs.saltstack.com/en/latest/topics/reactor/#syncing-custom-types-on-minion-start
+
+
+### TO-DO
 - [ ] check files changed by state files and ensure they are known
-- [ ] add code for base image, base image and repo lockdown
-- [ ] add example for encrypted pillars
-- [ ] add tests for different env
+- [ ] add code for building base images from salt
+- [ ] add example of encrypted pillars
 - [ ] add custom runner and state example
