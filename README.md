@@ -65,6 +65,7 @@ The salt directory houses the extension module present in `ext` directory and th
 
 ### Gotachas
 -  Add boot orchestrate to sync_all on minion start to allow custom module at boot time. https://docs.saltstack.com/en/latest/topics/reactor/#syncing-custom-types-on-minion-start
+-  Unlike all other external modules, pillars are not loaded from their pluralized name. They are loaded from "_pillar" directory.
 
 
 ### TO-DO
