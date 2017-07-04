@@ -70,6 +70,5 @@ The salt directory houses the extension module present in `ext` directory and th
 
 ### TO-DO
 - [ ] check files changed by state files and ensure they are known
-- [ ] add code for building base images from salt
 - [ ] add example of encrypted pillars
 - [ ] add custom runner and state example

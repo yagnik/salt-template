@@ -1,0 +1,33 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "centos",
+      "commit": true
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "{{template_dir}}/salt.repo",
+      "destination": "/etc/yum.repos.d/salt.repo"
+    },
+    {
+      "type": "shell",
+      "inline": ["yum install -y salt-minion-{{user `salt_version`}}-1.el7"]
+    },
+    {
+      "type": "salt-masterless",
+      "disable_sudo": true,
+      "skip_bootstrap": true,
+      "local_state_tree": "{{template_dir}}/../../salt/prd/states",
+      "local_pillar_roots": "{{template_dir}}/../../salt/prd/pillars",
+      "minion_config": "{{template_dir}}/../../templates/etc/minion.image",
+      "custom_state": "example.latest"
+    },
+    {
+      "type": "shell",
+      "inline": ["rm -rf /etc/yum.repos.d/salt.repo /srv/*"]
+    }
+  ]
+}
