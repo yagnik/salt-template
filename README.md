@@ -19,6 +19,9 @@ make test
 ```
 The above will bring up docker containers using docker-compose and run tests to ensure everything is setup properly.
 
+## Image Building
+Look under [packer readme](https://github.com/yagnik/salt-template/blob/master/packer/README.md)
+
 ## Layouts and opinions
 The directory structure of the repo is as follows:
 - salt -> this directory houses all salt code including states and modules
