@@ -70,5 +70,5 @@ The salt directory houses the extension module present in `ext` directory and th
 
 ### TO-DO
 - [ ] check files changed by state files and ensure they are known
-- [ ] add example of encrypted pillars
+- [ ] add example of encrypted pillars [nacl encryption](https://github.com/saltstack/salt/pull/41868) and [encrypted tags](https://github.com/saltstack/salt/pull/41956)
 - [ ] add custom runner and state example
