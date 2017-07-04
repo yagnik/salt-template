@@ -14,13 +14,13 @@ setup: docker-start
 clean: docker-stop
 
 test-style: docker-start
-	docker exec -it saltstacktemplate_masterless_1 flake8 .
+	docker exec -it salttemplate_masterless_1 flake8 .
 
 test-master: docker-start
-	docker exec -it saltstacktemplate_master_1 pytest -v -p no:cacheprovider
+	docker exec -it salttemplate_master_1 pytest -v -p no:cacheprovider
 
 test-masterless: docker-start
-	docker exec -it saltstacktemplate_masterless_1 pytest -v -p no:cacheprovider
+	docker exec -it salttemplate_masterless_1 pytest -v -p no:cacheprovider
 
 test: docker-start test-masterless test-master test-style
 
