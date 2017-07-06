@@ -7,11 +7,9 @@ log_level: info
 module_dirs:
   - /srv/salt/ext
 
-engines:
-  example: {}
-
 file_roots:
-  base: []
+  base:
+    - /srv/salt/ext
   dev:
     - /srv/salt/dev/orch
     - /srv/salt/stg/orch
@@ -45,4 +43,7 @@ pillar_roots:
     - /srv/salt/prd/pillars
 
 ext_pillar:
+  - example: {}
+
+engines:
   - example: {}

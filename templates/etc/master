@@ -8,14 +8,12 @@ gather_job_timeout: 60
 ping_on_rotate: True
 renderer: jinja | yaml | gpg
 
-engines:
-  example: {}
-
 module_dirs:
   - /srv/salt/ext
 
 file_roots:
-  base: []
+  base:
+    - /srv/salt/ext
   dev:
     - /srv/salt/dev/orch
     - /srv/salt/stg/orch
@@ -58,3 +56,6 @@ ext_pillar:
 reactor:
   - 'salt/minion/*/start':
     - salt://reactors/boot.sls?saltenv=dev
+
+engines:
+  - example: {}
