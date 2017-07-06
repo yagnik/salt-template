@@ -5,3 +5,5 @@ example.pkg:
     - name: {{ example.pkg }}
   cmd.run:
     - name: touch /etc/bar
+  example.managed:
+    - name: foo
