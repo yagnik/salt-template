@@ -9,11 +9,11 @@ def __virtual__():
 
 def managed(name):
     ret = {
-      'name': 'example',
-      'changes': {},
-      'result': False,
-      'comment': '',
-      'pchanges': {}
+        'name': 'example',
+        'changes': {},
+        'result': False,
+        'comment': '',
+        'pchanges': {}
     }
 
     current_state = __salt__['example.func']()
@@ -22,7 +22,7 @@ def managed(name):
         ret['comment'] = 'System is already in the correct state'
         return ret
 
-    if __opts__['test'] == True:
+    if __opts__['test'] is True:
         ret['comment'] = 'The state will be changed.'
         ret['pchanges'] = {
             'old': current_state,
