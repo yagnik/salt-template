@@ -24,7 +24,3 @@ class TestMinion(TestBase):
     @pytest.fixture
     def __salt_call__(self):
         return salt.client.Caller()
-
-# @pytest.mark.skipif(len(os.listdir(SALT_BASE_PATH)) == 0, reason="Skipping cause test only runs on master")
-# class TestMasterless(TestBase):
-#     pass
