@@ -77,3 +77,35 @@ The salt directory houses the extension module present in `ext` directory and th
 - [ ] ensure all tests are present and running
 - [ ] ensure all templates are present
 - [ ] ability for docker to setup container without salt-minion, salt-ssh maybe ?
+
+
+
+- test for pillars
+- ensure that pillars name starts from file name
+- ensure that top file has all pillars
+
+
+
+- test for orchestration
+- ensure orchestrators start with filename
+- test for reactors
+- ensure reactors start with filename
+- test for state files
+- ensure states start with filename
+
+
+ext:
+- test for beacons # u + i
+- test for engines # u + i
+- test for grains
+- test for modules
+- test for external pillars
+- test for returners
+- test fot runners # u + i
+- test for state modules
+- test for utils
+
+
+- ensure that correct version in correct environment
+- ensure that test files present for each module file
+- add support for dev files to remain only for x amount of time so that they are forced to be moved
