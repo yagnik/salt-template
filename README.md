@@ -80,20 +80,20 @@ The salt directory houses the extension module present in `ext` directory and th
 
 
 
-- [ ]test for pillars
-- [ ]ensure that pillars name starts from file name
-- [ ]ensure that top file has all pillars
-- [ ]test for orchestration
-- [ ]ensure orchestrators start with filename
-- [ ]test for reactors
-- [ ]ensure reactors start with filename
-- [ ]test for state files
-- [ ]ensure states start with filename
+- [ ] test for pillars
+- [ ] ensure that pillars name starts from file name
+- [ ] ensure that top file has all pillars
+- [ ] test for orchestration
+- [ ] ensure orchestrators start with filename
+- [ ] test for reactors
+- [ ] ensure reactors start with filename
+- [ ] test for state files
+- [ ] ensure states start with filename
 
 
 ext:
-- [ ]test for beacons # u + i
-- [ ]test for engines # u + i
-- [ ]test for returners
-- [ ]test fot runners # u + i
-- [ ]test for state modules
+- [ ] test for beacons # u + i
+- [ ] test for engines # u + i
+- [ ] test for returners
+- [ ] test fot runners # u + i
+- [ ] test for state modules
