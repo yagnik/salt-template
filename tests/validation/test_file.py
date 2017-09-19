@@ -76,14 +76,14 @@ class TestFile(object):
                             files = os.listdir(os.path.join(env_path, state, version))
                             assert set(core_files).intersection(set(files)) == set(core_files)
 
-    # def test_ensure_external_module_has_test_file(self):
-    #     external_module_path = "%s/salt/ext" % self.ROOT
-    #     test_path = "%s/tests/unit" % self.ROOT
-    #     for subdir, dirs, files in os.walk(external_module_path):
-    #         for file in filter(lambda file: file.endswith(".py") and file != "__init__.py", files):
-    #             ext_module_file_path = "%s/test_%s" % (subdir, file)
-    #             test_module_file_path = ext_module_file_path.replace(external_module_path, test_path)
-    #             assert os.path.exists(test_module_file_path), "%s file is missing" % test_module_file_path
+    def test_ensure_external_module_has_test_file(self):
+        external_module_path = "%s/salt/ext" % self.ROOT
+        test_path = "%s/tests/unit" % self.ROOT
+        for subdir, dirs, files in os.walk(external_module_path):
+            for file in filter(lambda file: file.endswith(".py") and file != "__init__.py", files):
+                ext_module_file_path = "%s/test_%s" % (subdir, file)
+                test_module_file_path = ext_module_file_path.replace(external_module_path, test_path)
+                assert os.path.exists(test_module_file_path), "%s file is missing" % test_module_file_path
 
 
 class Hasher(object):

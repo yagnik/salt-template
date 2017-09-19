@@ -7,13 +7,12 @@ that differ from whats in defaults.yaml
 
 
 {% set os_family_map = salt['grains.filter_by']({
-        'Debian': {},
-        'RedHat': {
-
-            "pkg" : 'example-redhat',
-}
-  }
-  , grain="os_family")
+  'Debian': {},
+  'RedHat': {
+    "pkg" : 'example-redhat',
+    }
+  },
+  grain="os_family")
 %}
 
 

@@ -3,7 +3,3 @@
 example.pkg:
   test.succeed_without_changes:
     - name: {{ example.pkg }}
-  cmd.run:
-    - name: touch /etc/bar
-  example.managed:
-    - name: foo
