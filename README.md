@@ -98,3 +98,4 @@ ext:
 - [ ] test fot runners # u + i
 - [ ] test for state modules
 - [ ] fix reactor setup
+- [ ] use salt rpm instead of packer installer

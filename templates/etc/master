@@ -7,6 +7,7 @@ timeout: 5
 gather_job_timeout: 60
 ping_on_rotate: True
 renderer: jinja | yaml | gpg
+environment: dev
 
 module_dirs:
   - /srv/salt/ext
