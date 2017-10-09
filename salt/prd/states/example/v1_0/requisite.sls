@@ -2,4 +2,4 @@
 
 example.verify.pkg.installed:
   test.succeed_without_changes:
-    - name: {{ example.pkg }}
+    - name: {{ example.pkg }}s

@@ -23,6 +23,4 @@ def start():
         event = event_bus.get_event()
         jevent = json.dumps(event)
         if event:
-            log.error("^^^^^^")
             log.debug(jevent)
-            log.error("^^^^^^")

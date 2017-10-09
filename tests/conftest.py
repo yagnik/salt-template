@@ -2,6 +2,7 @@ import pytest
 import salt.config
 import salt.loader
 import salt.client
+from utils.path import PathHelper
 # import watchdog
 # import time
 
@@ -39,6 +40,9 @@ def __envs__():
     return ['base', 'dev', 'stg', 'prd']
 
 
+@pytest.fixture
+def path_helper():
+    return PathHelper
 # from watchdog.observers import Observer
 # from watchdog.events import PatternMatchingEventHandler
 # class MyEventHandler(PatternMatchingEventHandler):
