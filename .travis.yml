@@ -6,5 +6,6 @@ services:
 
 before_install:
   - make setup
+
 script:
   - make test

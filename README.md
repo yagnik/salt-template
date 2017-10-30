@@ -77,6 +77,7 @@ The salt directory houses the extension module present in `ext` directory and th
 - [ ] ensure all tests are present and running
 - [ ] ensure all templates are present
 - [ ] ability for docker to setup container without salt-minion, salt-ssh maybe or docker salt module ?
+- [ ] ability for packer to use salt rpm instead of github for salt minion setup
 
 
 

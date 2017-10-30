@@ -1,8 +1,8 @@
 from saltstack/centos-7-minimal
 WORKDIR "/srv"
 RUN yum install -y python-pip
-COPY ./requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
+COPY ./requirements /tmp/requirements
+RUN pip install -r /tmp/requirements/dev.txt
 
 COPY ./templates/etc/minion.image /etc/salt/minion.image
 COPY ./templates/etc/master /etc/salt/master

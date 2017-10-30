@@ -1,8 +1,7 @@
-pip==9.0.1
+-r base.txt
+
 Click==6.7
 flake8==3.3.0
-libnacl==1.5.0
 pytest-flake8==0.8.1
 pytest==3.1.1
-setuptools==36.0.1
 watchdog==0.8.3
