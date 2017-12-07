@@ -1,0 +1,19 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "{{name}}",
+      "commit": true
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell-local",
+      "command": "which salt-call"
+    },
+    {
+      "type": "shell",
+      "inline": ["salt-call dockerng.sls_build(name, base='ubuntu/base', mods='base')"]
+    }
+  ]
+}
