@@ -78,25 +78,24 @@ The salt directory houses the extension module present in `ext` directory and th
 - [ ] ensure all templates are present
 - [ ] ability for docker to setup container without salt-minion, salt-ssh maybe or docker salt module ?
 - [ ] ability for packer to use salt rpm instead of github for salt minion setup
-
-
-
-- [ ] test for pillars
-- [ ] ensure that pillars name starts from file name
-- [ ] ensure that top file has all pillars
 - [ ] test for orchestration
-- [ ] ensure orchestrators start with filename
 - [ ] test for reactors
-- [ ] ensure reactors start with filename
 - [ ] test for state files
-- [ ] ensure states start with filename
-
-
 ext:
-- [ ] test for beacons # u + i
-- [ ] test for engines # u + i
+- [ ] test for beacons 
+- [ ] test for engines 
 - [ ] test for returners
-- [ ] test fot runners # u + i
+- [ ] test fot runners 
 - [ ] test for state modules
 - [ ] fix reactor setup
 - [ ] use salt rpm instead of packer installer
+
+
+### validations
+- [ ] ensure that pillars name starts from file name
+- [ ] ensure that top file has all pillars
+- [ ] ensure orchestrators start with filename
+- [ ] ensure reactors start with filename
+- [ ] ensure states start with filename
+
+
