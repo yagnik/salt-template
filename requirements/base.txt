@@ -1,4 +1,3 @@
 pip==9.0.1
 setuptools==36.0.1
-libnacl==1.5.0
 

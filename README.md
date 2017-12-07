@@ -74,13 +74,9 @@ The salt directory houses the extension module present in `ext` directory and th
 ### TO-DO
 - [ ] check files changed by state files and ensure they are known
 - [ ] add example of encrypted pillars [nacl encryption](https://github.com/saltstack/salt/pull/41868) and [encrypted tags](https://github.com/saltstack/salt/pull/41956)
-- [ ] ensure all tests are present and running
 - [ ] ensure all templates are present
 - [ ] ability for docker to setup container without salt-minion, salt-ssh maybe or docker salt module ?
-- [ ] ability for packer to use salt rpm instead of github for salt minion setup
-- [ ] test for orchestration
-- [ ] test for reactors
-- [ ] test for state files
+
 ext:
 - [ ] test for beacons 
 - [ ] test for engines 
