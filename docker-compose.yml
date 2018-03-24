@@ -1,26 +1,47 @@
 version: '3'
+
 services:
   master:
     build:
       context: .
-      dockerfile: templates/docker/dockerfile-master
+      dockerfile: templates/docker/dockerfile
+    command: salt-master -l debug
     volumes:
-    - .:/srv
+      - .:/srv
+      - ./templates/etc/master:/etc/salt/master
+      - ./templates/etc/master.d/overrides.conf.local:/etc/salt/master.d/overrides.conf
+      - ./templates/etc/minion:/etc/salt/minion
+      - ./templates/etc/minion.d/overrides.conf.local:/etc/salt/minion.d/overrides.conf
     expose:
-    - "4505"
-    - "4506"
+      - "4505"
+      - "4506"
     hostname: master
-  minion_dev:
+    tty: true
+
+  minion:
     build:
       context: .
-      dockerfile: templates/docker/dockerfile-minion
-    hostname: minion-dev-int
+      dockerfile: templates/docker/dockerfile
+    command: salt-minion -l debug
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./templates/etc/minion:/etc/salt/minion
+      - ./templates/etc/minion.d/overrides.conf.local:/etc/salt/minion.d/overrides.conf
+    hostname: minion-local-int
     links:
     - master
+    tty: true
+
   masterless:
     build:
       context: .
-      dockerfile: templates/docker/dockerfile-masterlessminion
-    hostname: minion
+      dockerfile: templates/docker/dockerfile
+    command: tail -f /dev/null
+    hostname: minion-local-int-masterless
     volumes:
-    - .:/srv
+      - .:/srv
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./templates/etc/master:/etc/salt/minion
+      - ./templates/etc/master.d/overrides.conf.local:/etc/salt/minion.d/overrides.conf
+      - ./templates/etc/minion.d/mode.conf.local:/etc/salt/minion.d/mode.conf
+    tty: true

@@ -1,0 +1,17 @@
+environment: stg
+file_roots:
+  base:
+    - /srv/salt/ext
+  stg:
+    - /srv/salt/environments/stg/orch
+    - /srv/salt/environments/prd/orch
+    - /srv/salt/environments/stg/reactors
+    - /srv/salt/environments/prd/reactors
+    - /srv/salt/environments/stg/states
+    - /srv/salt/environments/prd/states
+
+pillar_roots:
+  base:
+    - /srv/salt/environments/base/pillars
+  stg:
+    - /srv/salt/environments/stg/pillars

@@ -1,0 +1,21 @@
+environment: dev
+worker_threads: 3
+file_roots:
+  base:
+    - /srv/salt/ext
+  dev:
+    - /srv/salt/environments/dev/orch
+    - /srv/salt/environments/stg/orch
+    - /srv/salt/environments/prd/orch
+    - /srv/salt/environments/dev/reactors
+    - /srv/salt/environments/stg/reactors
+    - /srv/salt/environments/prd/reactors
+    - /srv/salt/environments/dev/states
+    - /srv/salt/environments/stg/states
+    - /srv/salt/environments/prd/states
+
+pillar_roots:
+  base:
+    - /srv/salt/environments/base/pillars
+  dev:
+    - /srv/salt/environments/dev/pillars

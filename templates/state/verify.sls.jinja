@@ -1,5 +1,0 @@
-{{'{% from "' + name + '/map.jinja" import ' + name + ' with context %}'}}
-
-{{name}}.verify.pkg.installed:
-  test.succeed_without_changes:
-    - name: {{ '{{ ' + name + '.pkg }}' }}

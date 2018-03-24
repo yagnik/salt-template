@@ -1,0 +1,14 @@
+environment: prd
+file_roots:
+  base:
+    - /srv/salt/ext
+  prd:
+    - /srv/salt/environments/prd/orch
+    - /srv/salt/environments/prd/reactors
+    - /srv/salt/environments/prd/states
+
+pillar_roots:
+  base:
+    - /srv/salt/environments/base/pillars
+  prd:
+    - /srv/salt/environments/prd/pillars

@@ -1,6 +1,7 @@
 import os
 import glob
 
+
 class PathHelper(object):
 
     @staticmethod
@@ -56,20 +57,24 @@ class PillarPathHelper(PathHelper):
         super(PillarPathHelper, self).__init__()
         self.kind = "pillars"
 
+
 class StatePathHelper(PathHelper):
     def __init__(self):
         super(StatePathHelper, self).__init__()
         self.kind = "states"
+
 
 class OrchPathHelper(PathHelper):
     def __init__(self):
         super(OrchPathHelper, self).__init__()
         self.kind = "orch"
 
+
 class ReactorPathHelper(PathHelper):
     def __init__(self):
         super(ReactorPathHelper, self).__init__()
         self.kind = "reactors"
+
 
 class ExtPathHelper(PathHelper):
     def __init__(self):

@@ -18,7 +18,7 @@ class TestMaster(TestBase):
         return salt.client.LocalClient()
 
 
-@pytest.mark.skipif("master" in socket.gethostname(), reason="Skipping cause test only runs on master")
+@pytest.mark.skipif("master" in socket.gethostname() and "masterless" not in socket.gethostname(), reason="Skipping cause test only runs on master")
 class TestMinion(TestBase):
 
     @pytest.fixture
